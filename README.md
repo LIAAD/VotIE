@@ -9,7 +9,7 @@ VotIE is a span-level task: given a segment of Portuguese municipal meeting minu
 of each voting event, namely what was voted on, how, the outcome, and which councillors voted for,
 against, abstained or were absent. This repository contains the benchmark splits, the eight
 discriminative baselines, the three generative baselines (Gemini 2.5 Pro, GPT-5.5, AMALIA 8B), and the
-evaluation results behind the paper's tables.
+predictions and evaluations behind the paper's tables.
 
 - **Demo:** [huggingface.co/spaces/Anonymous3445/VotIE-demo](https://huggingface.co/spaces/Anonymous3445/VotIE-demo)
 - **Model:** [huggingface.co/Evans2424/DeBERTa-CRF-VotIE](https://huggingface.co/Evans2424/DeBERTa-CRF-VotIE) (mDeBERTa-v3 + CRF, the best system)
@@ -194,7 +194,7 @@ with `seqeval` on their subword-level BIO labels; generative outputs are scored 
 
 ### Analyses
 
-These scripts read prediction files, which are produced by the runs above and are not included here.
+These scripts read the published prediction files in `results/` together with the test set.
 
 | Script | Paper |
 |---|---|
@@ -238,8 +238,8 @@ paper reports all baselines):
 
 | Paper | Files |
 |---|---|
-| Table 1 | `results/standard/<model>/seed_s<SEED>_evaluation.json`, `results/generative/<model>/{zero,few}_shot_evaluation.json`; aggregated in `results/seed_aggregate_summary.json` |
-| Table 2 | `results/lomo/<model>/<M0X>_seed_s<SEED>_evaluation.json`, `results/generative/lomo/gemini/`; LaTeX body in `results/table2_lomo_body.tex` |
+| Table 1 | `results/standard/<model>/seed_s<SEED>_{predictions.jsonl,evaluation.json}`, `results/generative/<model>/{zero,few}_shot{.jsonl,_evaluation.json}`; aggregated in `results/seed_aggregate_summary.json` |
+| Table 2 | `results/lomo/<model>/<M0X>_seed_s<SEED>_{predictions.jsonl,evaluation.json}`, `results/generative/lomo/gemini/`; LaTeX body in `results/table2_lomo_body.tex` |
 | Significance tests | `results/statistical_tests.json`, `results/statistical_tests_lomo.json`, `results/statistical_tests_generative.json` |
 | Table 3 | `results/error_classification_results.json` |
 | Appendix C | `results/generative/STANDARD_BENCHMARK.md` |
@@ -259,9 +259,9 @@ scripts/                     training, prediction, evaluation, aggregation, stat
   dataset_generation/        CitiLink-Minutes JSON -> span JSONL -> standard and LOMO splits
   llm_extraction/            generative extraction, cross-municipality runs, reports
 results/
-  standard/                  in-domain evaluations per model and seed
-  lomo/                      leave-one-municipality-out evaluations per model, fold and seed
-  generative/                generative evaluations (standard and LOMO) and the reliability report
+  standard/                  in-domain predictions and evaluations per model and seed
+  lomo/                      leave-one-municipality-out predictions and evaluations per model, fold and seed
+  generative/                generative predictions and evaluations (standard and LOMO), reliability report
 tests/
 ```
 

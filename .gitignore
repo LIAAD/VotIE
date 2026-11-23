@@ -23,5 +23,4 @@ models/
 results/runs/
 logs/
 evaluation/
-*_predictions.jsonl
 data/citilink_spans_v2/
