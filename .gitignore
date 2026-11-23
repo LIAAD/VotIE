@@ -1,0 +1,27 @@
+# Environment and secrets
+.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Data: obtain CitiLink-Minutes from INESC TEC RDM (see README) and place it under data/
+data/citilink-dataset/
+data/citilink-votie/
+data/citilink-votie-lomo-splits/
+
+# Training and prediction outputs
+models/
+results/runs/
+logs/
+evaluation/
+*_predictions.jsonl
+data/citilink_spans_v2/

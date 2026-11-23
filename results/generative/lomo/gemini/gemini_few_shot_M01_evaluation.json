@@ -1,0 +1,185 @@
+{
+  "entity_level": {
+    "precision": 0.573092904506132,
+    "recall": 0.5909580603260477,
+    "f1": 0.5805031821500373
+  },
+  "per_type_metrics": {
+    "VOTER-FAVOR": {
+      "precision": 0.9932432432432432,
+      "recall": 0.9887892376681614,
+      "f1": 0.9910112359550561,
+      "support": 446
+    },
+    "VOTER-AGAINST": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    },
+    "VOTER-ABSTENTION": {
+      "precision": 0.918918918918919,
+      "recall": 0.9444444444444444,
+      "f1": 0.9315068493150684,
+      "support": 36
+    },
+    "VOTER-ABSENT": {
+      "precision": 0.625,
+      "recall": 0.5555555555555556,
+      "f1": 0.5882352941176471,
+      "support": 9
+    },
+    "VOTING": {
+      "precision": 0.7699619771863118,
+      "recall": 0.995085995085995,
+      "f1": 0.8681672025723474,
+      "support": 407
+    },
+    "SUBJECT": {
+      "precision": 0.021897810218978103,
+      "recall": 0.022113022113022112,
+      "f1": 0.02200488997555012,
+      "support": 407
+    },
+    "COUNTING-UNANIMITY": {
+      "precision": 1.0,
+      "recall": 0.9945504087193461,
+      "f1": 0.9972677595628415,
+      "support": 367
+    },
+    "COUNTING-MAJORITY": {
+      "precision": 0.975,
+      "recall": 1.0,
+      "f1": 0.9873417721518987,
+      "support": 39
+    }
+  },
+  "macro_denominator": 11,
+  "total_predictions": 504,
+  "matched_to_ground_truth": 504,
+  "alignment_fidelity": {
+    "total_documents": 504,
+    "documents_with_errors": 0,
+    "total_spans": 1840,
+    "aligned_spans": 1840,
+    "failed_spans": 0,
+    "alignment_fidelity": 1.0,
+    "non_verbatim_error_count": 0,
+    "non_verbatim_errors": []
+  },
+  "relaxed_boundary_metrics": {
+    "precision": 0.6777993832688453,
+    "recall": 0.7039339869994876,
+    "f1": 0.6894902974806892,
+    "macro_denominator": 11,
+    "per_type_metrics": {
+      "VOTER-FAVOR": {
+        "precision": 1.0,
+        "recall": 0.9955156950672646,
+        "f1": 0.9977528089887641,
+        "support": 446
+      },
+      "VOTING": {
+        "precision": 0.7670454545454546,
+        "recall": 0.995085995085995,
+        "f1": 0.8663101604278075,
+        "support": 407
+      },
+      "COUNTING-UNANIMITY": {
+        "precision": 0.9945504087193461,
+        "recall": 0.9945504087193461,
+        "f1": 0.9945504087193461,
+        "support": 367
+      },
+      "SUBJECT": {
+        "precision": 0.9684466019417476,
+        "recall": 0.9803439803439803,
+        "f1": 0.9743589743589743,
+        "support": 407
+      },
+      "COUNTING-MAJORITY": {
+        "precision": 0.975,
+        "recall": 1.0,
+        "f1": 0.9873417721518987,
+        "support": 39
+      },
+      "VOTER-ABSTENTION": {
+        "precision": 0.972972972972973,
+        "recall": 1.0,
+        "f1": 0.9863013698630138,
+        "support": 36
+      },
+      "VOTER-AGAINST": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 3
+      },
+      "VOTER-ABSENT": {
+        "precision": 0.7777777777777778,
+        "recall": 0.7777777777777778,
+        "f1": 0.7777777777777778,
+        "support": 9
+      }
+    }
+  },
+  "metadata": {
+    "test_municipality": "M01",
+    "train_municipalities": [
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M06"
+    ],
+    "provider": "gemini",
+    "model_id": "gemini-2.5-pro",
+    "strategy": "few_shot",
+    "num_test_examples": 504,
+    "num_errors": 0,
+    "few_shot_examples": [
+      {
+        "phenomenon": "majority_with_dissent",
+        "tier": "strict",
+        "id": "Porto_cm_050_2024-01-15_21",
+        "municipality": "M06",
+        "split": "dev",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "unanimity_with_absent",
+        "tier": "strict",
+        "id": "Fundao_cm_010_2024-21-06_8",
+        "municipality": "M04",
+        "split": "test",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "secret_ballot",
+        "tier": "strict",
+        "id": "Porto_cm_007_2022-01-31_14",
+        "municipality": "M06",
+        "split": "train",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "multi_vote",
+        "tier": "strict",
+        "id": "Covilha_cm_004-A_2021-12-03_11",
+        "municipality": "M03",
+        "split": "train",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "empty_extraction",
+        "tier": "strict",
+        "id": "Campomaior_cm_014_2023-07-05_26",
+        "municipality": "M02",
+        "split": "train",
+        "n_entities": 0
+      }
+    ],
+    "predictions_file": "results/generative/lomo/gemini/gemini_few_shot_M01.jsonl",
+    "timestamp": "2026-08-05T05:31:48.326560"
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "entity_level": {
+    "precision": 0.5566780917423286,
+    "recall": 0.49599092495537495,
+    "f1": 0.5224331579947945
+  },
+  "per_type_metrics": {
+    "VOTER-FAVOR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 26
+    },
+    "VOTER-AGAINST": {
+      "precision": 0.020833333333333332,
+      "recall": 0.0196078431372549,
+      "f1": 0.020202020202020204,
+      "support": 102
+    },
+    "VOTER-ABSTENTION": {
+      "precision": 0.010869565217391304,
+      "recall": 0.01,
+      "f1": 0.010416666666666666,
+      "support": 200
+    },
+    "VOTER-ABSENT": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 6
+    },
+    "VOTING": {
+      "precision": 0.9934640522875817,
+      "recall": 0.9722814498933902,
+      "f1": 0.9827586206896551,
+      "support": 469
+    },
+    "SUBJECT": {
+      "precision": 0.6550976138828634,
+      "recall": 0.6398305084745762,
+      "f1": 0.6473740621650589,
+      "support": 472
+    },
+    "COUNTING-UNANIMITY": {
+      "precision": 0.9965277777777778,
+      "recall": 1.0,
+      "f1": 0.9982608695652174,
+      "support": 287
+    },
+    "COUNTING-MAJORITY": {
+      "precision": 0.44666666666666666,
+      "recall": 0.43790849673202614,
+      "f1": 0.44224422442244227,
+      "support": 153
+    },
+    "COUNT-FAVOR": {
+      "precision": 1.0,
+      "recall": 0.7307692307692307,
+      "f1": 0.8444444444444443,
+      "support": 26
+    },
+    "COUNT-BLANK": {
+      "precision": 1.0,
+      "recall": 0.7407407407407407,
+      "f1": 0.851063829787234,
+      "support": 27
+    },
+    "VOTING-METHOD": {
+      "precision": 1.0,
+      "recall": 0.9047619047619048,
+      "f1": 0.9500000000000001,
+      "support": 21
+    }
+  },
+  "macro_denominator": 11,
+  "total_predictions": 472,
+  "matched_to_ground_truth": 472,
+  "alignment_fidelity": {
+    "total_documents": 472,
+    "documents_with_errors": 5,
+    "total_spans": 1776,
+    "aligned_spans": 1776,
+    "failed_spans": 0,
+    "alignment_fidelity": 1.0,
+    "non_verbatim_error_count": 0,
+    "non_verbatim_errors": []
+  },
+  "relaxed_boundary_metrics": {
+    "precision": 0.8758934383451521,
+    "recall": 0.7825926758305897,
+    "f1": 0.8042118508573561,
+    "macro_denominator": 11,
+    "per_type_metrics": {
+      "SUBJECT": {
+        "precision": 0.9956616052060737,
+        "recall": 0.972457627118644,
+        "f1": 0.9839228295819935,
+        "support": 472
+      },
+      "VOTING": {
+        "precision": 0.9828693790149893,
+        "recall": 0.9582463465553236,
+        "f1": 0.9704016913319239,
+        "support": 479
+      },
+      "COUNTING-UNANIMITY": {
+        "precision": 0.9965277777777778,
+        "recall": 1.0,
+        "f1": 0.9982608695652174,
+        "support": 287
+      },
+      "COUNTING-MAJORITY": {
+        "precision": 0.9866666666666667,
+        "recall": 0.9673202614379085,
+        "f1": 0.9768976897689768,
+        "support": 153
+      },
+      "VOTER-ABSTENTION": {
+        "precision": 0.907608695652174,
+        "recall": 0.835,
+        "f1": 0.8697916666666666,
+        "support": 200
+      },
+      "VOTING-METHOD": {
+        "precision": 0.9523809523809523,
+        "recall": 0.5555555555555556,
+        "f1": 0.7017543859649122,
+        "support": 36
+      },
+      "COUNT-FAVOR": {
+        "precision": 0.8148148148148148,
+        "recall": 0.6111111111111112,
+        "f1": 0.6984126984126984,
+        "support": 36
+      },
+      "COUNT-BLANK": {
+        "precision": 0.8518518518518519,
+        "recall": 0.6216216216216216,
+        "f1": 0.7187499999999999,
+        "support": 37
+      },
+      "VOTER-FAVOR": {
+        "precision": 0.49019607843137253,
+        "recall": 0.9615384615384616,
+        "f1": 0.6493506493506493,
+        "support": 26
+      },
+      "VOTER-AGAINST": {
+        "precision": 0.90625,
+        "recall": 0.8529411764705882,
+        "f1": 0.8787878787878787,
+        "support": 102
+      },
+      "VOTER-ABSENT": {
+        "precision": 0.75,
+        "recall": 0.2727272727272727,
+        "f1": 0.39999999999999997,
+        "support": 11
+      },
+      "COUNT-AGAINST": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2
+      }
+    }
+  },
+  "metadata": {
+    "test_municipality": "M06",
+    "train_municipalities": [
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05"
+    ],
+    "provider": "gemini",
+    "model_id": "gemini-2.5-pro",
+    "strategy": "few_shot",
+    "num_test_examples": 472,
+    "num_errors": 5,
+    "few_shot_examples": [
+      {
+        "phenomenon": "majority_with_dissent",
+        "tier": "relaxed",
+        "id": "Alandroal_cm_008_2022-04-13_6",
+        "municipality": "M01",
+        "split": "train",
+        "n_entities": 6
+      },
+      {
+        "phenomenon": "unanimity_with_absent",
+        "tier": "strict",
+        "id": "Fundao_cm_010_2024-21-06_8",
+        "municipality": "M04",
+        "split": "test",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "secret_ballot",
+        "tier": "relaxed",
+        "id": "Guimaraes_cm_010_2022-05-19_13",
+        "municipality": "M05",
+        "split": "train",
+        "n_entities": 6
+      },
+      {
+        "phenomenon": "multi_vote",
+        "tier": "strict",
+        "id": "Covilha_cm_004-A_2021-12-03_11",
+        "municipality": "M03",
+        "split": "train",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "empty_extraction",
+        "tier": "strict",
+        "id": "Campomaior_cm_014_2023-07-05_26",
+        "municipality": "M02",
+        "split": "train",
+        "n_entities": 0
+      }
+    ],
+    "predictions_file": "results/generative/lomo/gemini/gemini_few_shot_M06.jsonl",
+    "timestamp": "2026-08-06T08:36:27.677145"
+  }
+}

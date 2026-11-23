@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "predictions_file": "results/generative/gpt5.5/few_shot.jsonl",
+    "timestamp": "2026-08-20T16:26:16.211771",
+    "num_examples": 529,
+    "include_events": false
+  },
+  "entity_level_metrics": {
+    "entity_precision": 0.586326954028459,
+    "entity_recall": 0.6075079879673271,
+    "entity_f1": 0.5941838171534284,
+    "per_type_metrics": {
+      "VOTER-FAVOR": {
+        "precision": 0.8490566037735849,
+        "recall": 0.8490566037735849,
+        "f1_score": 0.8490566037735849,
+        "support": 318
+      },
+      "VOTER-AGAINST": {
+        "precision": 0.20588235294117646,
+        "recall": 0.19444444444444445,
+        "f1_score": 0.19999999999999998,
+        "support": 36
+      },
+      "VOTER-ABSTENTION": {
+        "precision": 0.24468085106382978,
+        "recall": 0.17037037037037037,
+        "f1_score": 0.20087336244541484,
+        "support": 135
+      },
+      "VOTER-ABSENT": {
+        "precision": 0.14285714285714285,
+        "recall": 0.1111111111111111,
+        "f1_score": 0.125,
+        "support": 18
+      },
+      "VOTING": {
+        "precision": 0.8342857142857143,
+        "recall": 0.8957055214723927,
+        "f1_score": 0.8639053254437871,
+        "support": 489
+      },
+      "SUBJECT": {
+        "precision": 0.2711864406779661,
+        "recall": 0.3292181069958848,
+        "f1_score": 0.29739776951672864,
+        "support": 486
+      },
+      "COUNTING-UNANIMITY": {
+        "precision": 0.9905362776025236,
+        "recall": 0.9631901840490797,
+        "f1_score": 0.9766718506998445,
+        "support": 326
+      },
+      "COUNTING-MAJORITY": {
+        "precision": 0.1111111111111111,
+        "recall": 0.1694915254237288,
+        "f1_score": 0.1342281879194631,
+        "support": 59
+      },
+      "COUNT-FAVOR": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1_score": 0.888888888888889,
+        "support": 4
+      },
+      "COUNT-BLANK": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 5
+      },
+      "VOTING-METHOD": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 5
+      }
+    },
+    "evaluation_method": "seqeval_entity_level"
+  },
+  "alignment_fidelity": {
+    "total_documents": 529,
+    "documents_with_errors": 0,
+    "total_spans": 2038,
+    "aligned_spans": 2038,
+    "failed_spans": 0,
+    "alignment_fidelity": 1.0,
+    "non_verbatim_error_count": 0,
+    "non_verbatim_errors": []
+  },
+  "relaxed_boundary_metrics": {
+    "matching_criterion": "type_match_and_overlap",
+    "entity_precision": 0.855949429033855,
+    "entity_recall": 0.8835617858208905,
+    "entity_f1": 0.8616446321837601,
+    "delta_f1": 0.2674608150303317,
+    "per_type_metrics": {
+      "VOTER-FAVOR": {
+        "precision": 0.8726708074534162,
+        "recall": 0.8808777429467085,
+        "f1_score": 0.8767550702028082,
+        "support": 319
+      },
+      "VOTING": {
+        "precision": 0.8527272727272728,
+        "recall": 0.9591002044989775,
+        "f1_score": 0.9027911453320501,
+        "support": 489
+      },
+      "COUNTING-UNANIMITY": {
+        "precision": 0.9693251533742331,
+        "recall": 0.9693251533742331,
+        "f1_score": 0.9693251533742331,
+        "support": 326
+      },
+      "SUBJECT": {
+        "precision": 0.5827702702702703,
+        "recall": 0.7098765432098766,
+        "f1_score": 0.640074211502783,
+        "support": 486
+      },
+      "COUNTING-MAJORITY": {
+        "precision": 0.6555555555555556,
+        "recall": 1.0,
+        "f1_score": 0.7919463087248323,
+        "support": 59
+      },
+      "VOTER-ABSTENTION": {
+        "precision": 0.925531914893617,
+        "recall": 0.6444444444444445,
+        "f1_score": 0.759825327510917,
+        "support": 135
+      },
+      "VOTER-AGAINST": {
+        "precision": 0.8235294117647058,
+        "recall": 0.7777777777777778,
+        "f1_score": 0.7999999999999999,
+        "support": 36
+      },
+      "VOTING-METHOD": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 5
+      },
+      "COUNT-FAVOR": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1_score": 0.888888888888889,
+        "support": 4
+      },
+      "COUNT-BLANK": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 5
+      },
+      "VOTER-ABSENT": {
+        "precision": 0.9333333333333333,
+        "recall": 0.7777777777777778,
+        "f1_score": 0.8484848484848485,
+        "support": 18
+      }
+    }
+  }
+}

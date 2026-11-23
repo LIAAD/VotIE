@@ -1,0 +1,47 @@
+{
+  "corpus": "data/citilink-votie",
+  "segments": 2885,
+  "vocabulary": 12746,
+  "pairs_sampled_per_group": 20000,
+  "seed": 42,
+  "pairwise_tfidf_cosine": {
+    "within_municipality_mean": 0.1126,
+    "across_municipality_mean": 0.055,
+    "ratio": 2.05,
+    "cohens_d": 0.79
+  },
+  "per_fold": {
+    "M01": {
+      "segments": 504,
+      "centroid_cosine_to_training": 0.5115,
+      "distance_rank": 1
+    },
+    "M02": {
+      "segments": 398,
+      "centroid_cosine_to_training": 0.6876,
+      "distance_rank": 5
+    },
+    "M03": {
+      "segments": 720,
+      "centroid_cosine_to_training": 0.6124,
+      "distance_rank": 3
+    },
+    "M04": {
+      "segments": 235,
+      "centroid_cosine_to_training": 0.6775,
+      "distance_rank": 4
+    },
+    "M05": {
+      "segments": 556,
+      "centroid_cosine_to_training": 0.747,
+      "distance_rank": 6
+    },
+    "M06": {
+      "segments": 472,
+      "centroid_cosine_to_training": 0.5957,
+      "distance_rank": 2
+    }
+  },
+  "most_distant_fold": "M01",
+  "least_distant_fold": "M05"
+}

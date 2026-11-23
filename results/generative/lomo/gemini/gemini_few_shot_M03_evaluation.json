@@ -1,0 +1,221 @@
+{
+  "entity_level": {
+    "precision": 0.4342518122336093,
+    "recall": 0.43287361446028444,
+    "f1": 0.4332799362381726
+  },
+  "per_type_metrics": {
+    "VOTER-FAVOR": {
+      "precision": 0.9781144781144782,
+      "recall": 0.9715719063545151,
+      "f1": 0.9748322147651006,
+      "support": 598
+    },
+    "VOTER-AGAINST": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 44
+    },
+    "VOTER-ABSTENTION": {
+      "precision": 0.01953125,
+      "recall": 0.006775067750677507,
+      "f1": 0.01006036217303823,
+      "support": 738
+    },
+    "VOTER-ABSENT": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 23
+    },
+    "VOTING": {
+      "precision": 0.7741116751269036,
+      "recall": 0.7780612244897959,
+      "f1": 0.7760814249363868,
+      "support": 784
+    },
+    "SUBJECT": {
+      "precision": 0.005012531328320802,
+      "recall": 0.005201560468140442,
+      "f1": 0.005105296745373325,
+      "support": 769
+    },
+    "COUNTING-UNANIMITY": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+    },
+    "COUNTING-MAJORITY": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "COUNT-FAVOR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "COUNT-BLANK": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "VOTING-METHOD": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    }
+  },
+  "macro_denominator": 11,
+  "total_predictions": 720,
+  "matched_to_ground_truth": 720,
+  "alignment_fidelity": {
+    "total_documents": 720,
+    "documents_with_errors": 0,
+    "total_spans": 2830,
+    "aligned_spans": 2830,
+    "failed_spans": 0,
+    "alignment_fidelity": 1.0,
+    "non_verbatim_error_count": 0,
+    "non_verbatim_errors": []
+  },
+  "relaxed_boundary_metrics": {
+    "precision": 0.7486918496786207,
+    "recall": 0.6304676879409606,
+    "f1": 0.6592269087252111,
+    "macro_denominator": 11,
+    "per_type_metrics": {
+      "VOTER-FAVOR": {
+        "precision": 0.9731993299832495,
+        "recall": 0.9715719063545151,
+        "f1": 0.9723849372384937,
+        "support": 598
+      },
+      "VOTING": {
+        "precision": 0.6348547717842323,
+        "recall": 0.7806122448979592,
+        "f1": 0.7002288329519449,
+        "support": 784
+      },
+      "VOTER-ABSTENTION": {
+        "precision": 0.9922178988326849,
+        "recall": 0.34552845528455284,
+        "f1": 0.5125628140703518,
+        "support": 738
+      },
+      "SUBJECT": {
+        "precision": 0.6879699248120301,
+        "recall": 0.7139141742522757,
+        "f1": 0.7007019783024888,
+        "support": 769
+      },
+      "COUNTING-MAJORITY": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "VOTER-AGAINST": {
+        "precision": 1.0,
+        "recall": 0.3409090909090909,
+        "f1": 0.5084745762711864,
+        "support": 44
+      },
+      "VOTER-ABSENT": {
+        "precision": 0.9473684210526315,
+        "recall": 0.782608695652174,
+        "f1": 0.8571428571428571,
+        "support": 23
+      },
+      "VOTING-METHOD": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "COUNT-FAVOR": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "COUNT-BLANK": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "COUNTING-UNANIMITY": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 2
+      }
+    }
+  },
+  "metadata": {
+    "test_municipality": "M03",
+    "train_municipalities": [
+      "M01",
+      "M02",
+      "M04",
+      "M05",
+      "M06"
+    ],
+    "provider": "gemini",
+    "model_id": "gemini-2.5-pro",
+    "strategy": "few_shot",
+    "num_test_examples": 720,
+    "num_errors": 0,
+    "few_shot_examples": [
+      {
+        "phenomenon": "majority_with_dissent",
+        "tier": "strict",
+        "id": "Porto_cm_050_2024-01-15_21",
+        "municipality": "M06",
+        "split": "dev",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "unanimity_with_absent",
+        "tier": "strict",
+        "id": "Alandroal_cm_003_2023-02-01_9",
+        "municipality": "M01",
+        "split": "train",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "secret_ballot",
+        "tier": "strict",
+        "id": "Porto_cm_007_2022-01-31_14",
+        "municipality": "M06",
+        "split": "train",
+        "n_entities": 5
+      },
+      {
+        "phenomenon": "multi_vote",
+        "tier": "strict",
+        "id": "Campomaior_cm_004_2024-02-21_5",
+        "municipality": "M02",
+        "split": "dev",
+        "n_entities": 7
+      },
+      {
+        "phenomenon": "empty_extraction",
+        "tier": "strict",
+        "id": "Fundao_cm_003_2022-14-03_13",
+        "municipality": "M04",
+        "split": "train",
+        "n_entities": 0
+      }
+    ],
+    "predictions_file": "results/generative/lomo/gemini/gemini_few_shot_M03.jsonl",
+    "timestamp": "2026-08-05T14:53:19.778458"
+  }
+}
