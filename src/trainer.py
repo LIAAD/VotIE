@@ -47,22 +47,16 @@ Technical Implementation:
     - HuggingFace-compatible model saving format
 """
 
-import gc
 import json
 import logging
-import math
-import os
 import random
 import shutil
 import time
-import warnings
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 import torch
-import torch.nn as nn
-from torch.cuda.amp import GradScaler, autocast
 from torch.optim import AdamW
 from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler

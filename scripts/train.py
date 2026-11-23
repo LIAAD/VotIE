@@ -18,8 +18,8 @@ Transformer Baselines:
 - xlmr_crf: XLM-RoBERTa + CRF layer
 
 Usage:
-    python scripts/train.py --config configs/main_experiment/bert_crf.yaml
-    python scripts/train.py --config configs/main_experiment/crf.yaml --experiment-name exp1
+    python scripts/train.py --config configs/bert_crf.yaml
+    python scripts/train.py --config configs/crf.yaml --experiment-name exp1
 """
 
 import json
@@ -159,9 +159,7 @@ def train_bilstm(baseline_name: str, config_file: str = None, experiment_name: s
 
 def train_transformer(baseline_name: str, config_file: str = None, experiment_name: str = None, output_dir: str = None):
     """Train transformer baseline (BERT, DeBERTa, XLM-R)."""
-    import torch
     import yaml
-    from transformers import AutoTokenizer
     from src.trainer import VotIETrainer
     from src.models.bertimbau_models import BertimbauLinearVotIE, BertimbauCRFVotIE
     from src.models.deberta_models import DebertaLinearVotIE, DebertaCRFVotIE
@@ -284,13 +282,13 @@ def main(config_file: str, experiment_name: str = None, output_dir: str = None):
     config_path = Path(config_file)
     if not config_path.exists():
         print(f"❌ Config file not found: {config_file}")
-        print("\nAvailable configs in configs/main_experiment/:")
-        main_exp_dir = Path("configs/main_experiment")
+        print("\nAvailable configs in configs/:")
+        main_exp_dir = Path("configs")
         if main_exp_dir.exists():
             for cfg in sorted(main_exp_dir.glob("*.yaml")):
                 print(f"  - {cfg}")
         print("\nExample usage:")
-        print("  python scripts/train.py --config configs/main_experiment/bert_crf.yaml")
+        print("  python scripts/train.py --config configs/bert_crf.yaml")
         sys.exit(1)
 
     # Load config to get baseline name

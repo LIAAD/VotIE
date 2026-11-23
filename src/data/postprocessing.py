@@ -3,7 +3,6 @@ Postprocessing utilities for model output and token alignment.
 """
 
 import torch
-from typing import Optional
 
 
 def postprocess_model_output(predictions, tokenized_inputs, tokenizer=None):

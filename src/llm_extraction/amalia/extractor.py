@@ -59,9 +59,7 @@ class AmaliaSpanExtractor(BaseSpanExtractor):
         # Use stock OpenAI JSON mode: langextract injects
         # response_format={"type":"json_object"} which vLLM 0.8.2 routes
         # through xgrammar (fast constrained decoding, ~5s/example).
-        # An earlier YAML workaround was introduced when AMALIA ran a pre-0.7
-        # vLLM version where json_object triggered slow outlines (~300s);
-        # that is no longer the case. Without a format constraint AMALIA
+        # Without a format constraint AMALIA
         # ignores the task and outputs plain Portuguese prose.
         # max_output_tokens caps completion to prevent runaway generation.
         self._lm = OpenAILanguageModel(

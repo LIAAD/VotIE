@@ -25,7 +25,7 @@ import json
 import logging
 from collections import Counter
 from pathlib import Path
-from typing import Callable, Dict, List, NamedTuple, Optional, Tuple
+from typing import Callable, Dict, List, NamedTuple, Tuple
 
 import langextract as lx
 

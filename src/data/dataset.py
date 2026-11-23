@@ -10,11 +10,10 @@ Works with any BIO-tagged NER task (voting, assunto, etc.)
 import json
 import logging
 import re
-import datetime
 from pathlib import Path
 from typing import List, Dict, Any, Tuple, Optional
 from dataclasses import dataclass
-from collections import defaultdict, Counter
+from collections import Counter
 
 import torch
 from torch.utils.data import Dataset

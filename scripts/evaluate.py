@@ -8,7 +8,7 @@ Separated from prediction for better separation of concerns.
 Usage:
     from scripts.evaluate import evaluate
     evaluate(
-        predictions_path='predictions/test_predictions.jsonl',
+        predictions_path='results/runs/bert_crf/my_run/predictions.jsonl',
         output_path='results/evaluation.json',
         relaxed_threshold=0.1  # Optional: for ±10% boundary matching
     )
@@ -17,7 +17,7 @@ Usage:
 import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any
 from datetime import datetime
 from collections import defaultdict
 

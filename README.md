@@ -1,6 +1,7 @@
 # VotIE: Information Extraction from Meeting Minutes
 
-[![License: CC BY-ND 4.0](https://img.shields.io/badge/License-CC%20BY--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nd/4.0/)
+[![arXiv](https://img.shields.io/badge/arXiv-2601.03997-b31b1b.svg)](https://arxiv.org/abs/2601.03997)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
 Code and results for the EACL 2027 paper **"VotIE: Information Extraction from Meeting Minutes"**.
@@ -11,6 +12,7 @@ against, abstained or were absent. This repository contains the benchmark splits
 discriminative baselines, the three generative baselines (Gemini 2.5 Pro, GPT-5.5, AMALIA 8B), and the
 predictions and evaluations behind the paper's tables.
 
+- **Paper:** [arxiv.org/abs/2601.03997](https://arxiv.org/abs/2601.03997)
 - **Demo:** [huggingface.co/spaces/Anonymous3445/VotIE-demo](https://huggingface.co/spaces/Anonymous3445/VotIE-demo)
 - **Model:** [huggingface.co/Evans2424/DeBERTa-CRF-VotIE](https://huggingface.co/Evans2424/DeBERTa-CRF-VotIE) (mDeBERTa-v3 + CRF, the best system)
 - **Dataset:** CitiLink-Minutes, [doi.org/10.25747/7KG6-1K22](https://doi.org/10.25747/7KG6-1K22)
@@ -140,9 +142,9 @@ AMALIA_BASE_URL=http://host:8000   # AMALIA 8B served with vLLM
 ### Discriminative baselines
 
 One YAML per baseline in `configs/`: CRF, BiLSTM-CRF, and BERTimbau-Large, mDeBERTa-v3 and
-XLM-RoBERTa, each with a linear and a CRF head. Learning rate 5e-5, batch size 8, up to 10 epochs with
-early stopping on development macro F1. The encoder-CRF models were trained with seeds 42, 13 and 123,
-the other baselines with seed 42.
+XLM-RoBERTa, each with a linear and a CRF head. The Transformer encoders use learning rate 5e-5, batch
+size 8, and up to 10 epochs with early stopping on development macro F1. The encoder-CRF models were
+trained with seeds 42, 13 and 123, the other baselines with seed 42.
 
 ```bash
 # train -> predict -> evaluate on the standard split
@@ -153,8 +155,8 @@ python scripts/run_pipeline.py --config configs/municipality_experiments/deberta
     --name deberta_crf_M01_s42 --seed 42
 ```
 
-Runs are written to `results/runs/<model>/<name>/`. To aggregate them into the paper's tables, place
-each evaluation file at `results/standard/<model>/seed_s<SEED>_evaluation.json` (LOMO:
+Each run writes `predictions.jsonl` and `evaluation.json` (exact and relaxed match) to
+`results/runs/<model>/<name>/`. To aggregate runs into the paper's tables, place each evaluation file at `results/standard/<model>/seed_s<SEED>_evaluation.json` (LOMO:
 `results/lomo/<model>/<M0X>_seed_s<SEED>_evaluation.json`) and run:
 
 ```bash
@@ -268,7 +270,7 @@ tests/
 <a name="license"></a>
 ## License
 
-Released under [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/); see [LICENSE](LICENSE).
+Released under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/); see [LICENSE](LICENSE).
 The CitiLink-Minutes corpus is distributed separately under its own terms.
 
 ## Acknowledgments
@@ -286,6 +288,9 @@ supercomputer, jointly funded by EuroHPC JU and Portugal.
   author    = {Evans, Jos{\'e} Pedro and Cunha, Lu{\'i}s Filipe and Silvano, Purifica{\c{c}}{\~a}o and
                Jorge, Al{\'i}pio and Guimar{\~a}es, Nuno and Nunes, S{\'e}rgio and Campos, Ricardo},
   booktitle = {Proceedings of the 2027 Conference of the European Chapter of the Association for Computational Linguistics (EACL)},
-  year      = {2027}
+  year      = {2027},
+  eprint    = {2601.03997},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2601.03997}
 }
 ```

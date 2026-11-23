@@ -48,7 +48,6 @@ class BaseSpanExtractor(ABC):
         Raises:
             Exception: If extraction fails
         """
-        pass
 
     @abstractmethod
     def _build_prompt(self, text: str, examples: Optional[List[Dict]] = None) -> str:
@@ -62,7 +61,6 @@ class BaseSpanExtractor(ABC):
         Returns:
             Formatted prompt string
         """
-        pass
 
     def _create_result(
         self,

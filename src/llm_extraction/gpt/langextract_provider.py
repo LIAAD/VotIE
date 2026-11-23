@@ -279,8 +279,7 @@ class GptLanguageModel(BaseLanguageModel):
                        f"{self._cred + 1}/{len(self.credentials)}")
 
     def _call_with_retry(self, prompt: str) -> str:
-        # Rate limits and transient errors have separate budgets. (A single
-        # range(max_retries) loop used to cap rate-limit retries at 3, not 6.)
+        # Rate limits and transient errors have separate budgets.
         rate_limited = transient_failures = 0
         tried = 1  # credentials tried since the last backoff
         while True:

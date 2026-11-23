@@ -396,8 +396,8 @@ def align_extraction_result(
         model=result.model,
         strategy=result.strategy,
         processing_time=result.processing_time,
-        # Carried over explicitly: this rebuild used to drop them, which would
-        # silently discard the measured API time and the diagnostics block.
+        # Carried over explicitly, so the measured API time and the diagnostics
+        # block survive alignment.
         api_time=result.api_time,
         error=result.error,
         diagnostics=result.diagnostics,

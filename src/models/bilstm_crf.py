@@ -21,17 +21,14 @@ Portuguese voting documents.
 
 import logging
 import sys
-import numpy as np
 import torch
 import torch.nn as nn
-from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence, pad_packed_sequence
+from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from torchcrf import CRF
-from typing import Dict, List, Optional, Tuple, Union, Any
+from typing import Dict, List, Optional, Union
 from pathlib import Path
-import pickle
 import json
-from collections import defaultdict, Counter
-import re
+from collections import Counter
 import fasttext
 import fasttext.util
 
@@ -200,13 +197,10 @@ class FastTextEmbedding:
     def load_pretrained_embeddings(self) -> None:
         """Load pre-trained FastText embeddings using the fasttext library.
 
-        Raises rather than falling back to random vectors. This used to swallow
-        every failure and continue with `pretrained_model = None`, which trains
-        a model named "BiLSTM+FastText" that has never seen a FastText vector
-        and still reports a plausible F1 — on a batch node with no internet
-        (where the download branch cannot succeed) that is the *default* outcome,
-        and nothing downstream distinguishes it from a real run. Pass
-        allow_random_fallback=True to opt into it deliberately.
+        Raises rather than silently falling back to random vectors, which would
+        train a "BiLSTM+FastText" model that has never seen a FastText vector yet
+        still reports a plausible F1. Pass allow_random_fallback=True to opt into
+        random vectors deliberately.
         """
         model_path = self._resolve_model_path()
 

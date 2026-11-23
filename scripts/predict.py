@@ -8,9 +8,9 @@ Handles windowing automatically for long sequences.
 Usage:
     from scripts.predict import predict
     predict(
-        model_path='results/bert_crf/best_model',
+        model_path='models/bert_crf/my_run/best_model',
         test_data_path='data/citilink-votie/test.jsonl',
-        output_path='predictions/test_predictions.jsonl'
+        output_path='results/runs/bert_crf/my_run/predictions.jsonl'
     )
 """
 
@@ -619,8 +619,8 @@ if __name__ == '__main__':
     if len(sys.argv) < 4:
         print("Usage: python scripts/predict.py MODEL_PATH TEST_DATA_PATH OUTPUT_PATH [DEVICE]")
         print("\nExample:")
-        print("  python scripts/predict.py results/bert_crf/best_model data/citilink-votie/test.jsonl predictions/test_predictions.jsonl")
-        print("  python scripts/predict.py results/bert_crf/best_model data/citilink-votie/test.jsonl predictions/test_predictions.jsonl cuda")
+        print("  python scripts/predict.py models/bert_crf/my_run/best_model data/citilink-votie/test.jsonl results/runs/bert_crf/my_run/predictions.jsonl")
+        print("  python scripts/predict.py models/bert_crf/my_run/best_model data/citilink-votie/test.jsonl results/runs/bert_crf/my_run/predictions.jsonl cuda")
         sys.exit(1)
     
     model_path = sys.argv[1]

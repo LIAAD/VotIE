@@ -14,22 +14,15 @@ Features include:
 - Voting domain-specific patterns
 """
 
-import re
 import string
 import logging
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Any, Union
-from collections import Counter, defaultdict
+from typing import Dict, List, Tuple, Any, Union
 import json
 import pickle
 import time
 
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import classification_report, f1_score
-import sklearn_crfsuite
-from sklearn_crfsuite import CRF, metrics
+from sklearn_crfsuite import CRF
 
 # Import BIO validation and evaluation from core
 import sys

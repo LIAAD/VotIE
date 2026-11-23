@@ -21,7 +21,7 @@ from pathlib import Path
 from statistics import mean, pstdev, stdev
 from typing import List, Dict, Tuple
 from collections import defaultdict, Counter
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.llm_extraction.shared.data_utils import load_jsonl

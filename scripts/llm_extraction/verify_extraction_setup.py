@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 """Pre-flight checks for the generative extraction stack. Run before spending anything.
 
-Every check here corresponds to a defect that reached published results:
+Checks:
 
-  leakage       four of five curated demonstrations are gold documents from Porto
-                and Covilha, which a LOMO fold evaluates in full
-  alignment     the whitespace-recovery path returned offsets into a normalised
-                string, so it could only ever fail — silently discarding
-                multi-line SUBJECT spans
-  denominator   exact and relaxed macro used different, data-dependent denominators
-  diagnostics   extraction scripts rebuilt records by hand and dropped the
-                diagnostics block, making cost and discard rate unrecoverable
-  dedup         LOMO folds pooled the oversampled training split without
-                deduplicating, re-scoring and re-paying for duplicated segments
+  leakage       no LOMO demonstration comes from the held-out municipality (the
+                standard few-shot examples include Porto and Covilhã documents,
+                which a LOMO fold evaluates in full)
+  alignment     whitespace recovery returns offsets into the ORIGINAL text, so
+                multi-line SUBJECT spans are kept
+  denominator   exact and relaxed macro F1 share the same denominator
+  diagnostics   extraction records keep the diagnostics block (cost, discard rate)
+  dedup         LOMO folds deduplicate the oversampled training split
 
 Runs entirely offline. No API keys, no network, no cost.
 
@@ -140,7 +138,7 @@ def check_alignment():
     check("offsets index the ORIGINAL text, not a normalised copy",
           out is not None and src[out.start:out.end] == out.text)
 
-    # The rebuild inside align_extraction_result used to drop these.
+    # The rebuild inside align_extraction_result must keep these.
     res = SpanExtractionResult(
         id="d", text=src, entities=[SpanEntity(text="deliberou", type="VOTING")],
         model="m", strategy="few_shot", processing_time=1.0, api_time=0.5,

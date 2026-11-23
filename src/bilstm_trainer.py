@@ -13,12 +13,10 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Union, Tuple
 import torch
-import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 from torch.nn.utils.rnn import pad_sequence
-from torch.optim import Adam, AdamW
+from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-import numpy as np
 
 from .models.bilstm_crf import BiLSTMFastTextVotIE, FastTextEmbedding, CharacterVocab
 from src.evaluation.entity_metrics import EntityLevelEvaluator
@@ -320,9 +318,7 @@ class BiLSTMTrainer:
         """Prepare FastText embeddings for Portuguese."""
         logger.info("Preparing embeddings...")
 
-        # Initialize embedding handler. embeddings.fasttext_path was previously
-        # declared in every config and read by nothing, so the handler only ever
-        # looked next to its own module file.
+        # Initialize embedding handler from embeddings.fasttext_path in the config.
         embeddings_config = (self.config or {}).get('embeddings', {}) or {}
         self.embedding_handler = FastTextEmbedding(
             embedding_dim=self.embedding_dim,

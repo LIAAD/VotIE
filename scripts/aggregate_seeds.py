@@ -10,12 +10,11 @@ THE MACRO DENOMINATOR IS A CHOICE, AND IT MOVES EVERY LOMO CELL.
 The eval JSONs come from seqeval's classification_report, which emits a row only
 for types present in gold or prediction — so the number of rows varies by fold
 (8 to 12 across M01-M06, 11 on the standard test split). Averaging over
-"whatever rows exist" therefore silently changes the denominator per cell, which
-is what this script used to do while its docstring claimed 11 types. Two defensible
+"whatever rows exist" would silently change the denominator per cell. Two defensible
 policies are implemented, and both are always computed so the difference is visible:
 
   support   average over types with support > 0 in that fold (8-12 types).
-            Reproduces the published Tables 1 and 2 exactly. Cells within a
+            This is the policy used in Tables 1 and 2. Cells within a
             column share a denominator, so per-municipality model rankings are
             sound, but the Mean column averages across different denominators.
   fixed11   average over the 11 schema types excluding Count-Against, scoring
@@ -26,9 +25,8 @@ policies are implemented, and both are always computed so the difference is visi
 On the standard test split the two coincide (exactly 11 types have support), so
 they differ only for LOMO. Count-Against is excluded from both: the corpus holds
 exactly ONE Count-Against span — "1 voto contra" in
-Porto_cm_004_2021-12-06_17 — annotated twice at identical offsets, which is why
-it was previously counted as two. It falls in M06 and never in the standard test
-split.
+Porto_cm_004_2021-12-06_17 — annotated twice at identical offsets. It falls in
+M06 and never in the standard test split.
 """
 
 from __future__ import annotations
@@ -413,9 +411,7 @@ def print_lomo(summary: dict, denominator: str) -> None:
 
     dens = sorted({n for d in summary.values() for n in d["denominators_used"]})
     if len(dens) > 1:
-        # Spell the per-fold denominators out rather than naming folds in prose:
-        # the sentence used to claim "M06 has 12" and stayed behind when the
-        # Count-Against exclusion made it 11.
+        # Spell the per-fold denominators out rather than naming folds in prose.
         by_muni = {}
         for d in summary.values():
             for m in MUNICIPALITIES:
@@ -438,10 +434,8 @@ def print_lomo(summary: dict, denominator: str) -> None:
 def emit_latex(lomo: dict, denominator: str, path: Path) -> None:
     """Write the Table 2 body so no cell is transcribed by hand.
 
-    The header comments carry the two facts a caption has to state and that drifted
-    out of sync in the submitted version: the per-cell seed count (L3b) and the
-    per-fold denominator (L2). Keeping them next to the numbers they describe is
-    what stops the caption from claiming "3-seed means" over a 1-seed column again.
+    The header comments carry the two facts a caption has to state: the per-cell
+    seed count and the per-fold denominator, kept next to the numbers they describe.
     """
     present = [m for m, d in lomo.items()
                if not all(d["per_municipality"][mu]["seed_count"] == 0 for mu in MUNICIPALITIES)]
@@ -549,9 +543,8 @@ def main() -> None:
     summary["notes"] = {
         "entity_types": ENTITY_TYPES,
         "excluded": "COUNT-AGAINST (ONE gold span corpus-wide — '1 voto contra' in "
-                    "Porto_cm_004_2021-12-06_17, annotated twice at identical offsets, "
-                    "hence the '2 instances' previously reported; it falls in M06 and "
-                    "never in the standard test split)",
+                    "Porto_cm_004_2021-12-06_17, annotated twice at identical offsets; "
+                    "it falls in M06 and never in the standard test split)",
         "denominators": {
             "fixed11": "average over the 11 types above, absent types scored 0.0",
             "support": "average over types with support > 0 in that fold (8-11 for LOMO)",

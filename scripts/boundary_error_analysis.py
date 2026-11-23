@@ -79,10 +79,9 @@ def n_words(s: str) -> int:
 # ---------------------------------------------------------------------------
 # Cause families.
 #
-# The families are the ones that recurred in the 64-error manual sample
-# (results/error_analysis/manual_causes.json), restated here as a test on the
-# *delta string* -- the text a prediction adds or drops at the edge -- so that
-# every boundary error can be assigned one, instead of only the 64 read by hand.
+# The families are the ones that recurred in a manually inspected sample of 64
+# errors, restated here as a test on the *delta string* -- the text a prediction
+# adds or drops at the edge -- so that every boundary error can be assigned one.
 # The sample supplies the categories; these rules supply the counts.
 #
 # Precedence is the order in `classify_cause`, from the most specific surface
@@ -798,9 +797,8 @@ def main():
         emit_latex(results, args.out_latex)
         emit_delta_latex(results,
                          str(Path(args.out_latex).with_name('edge_delta_table.tex')))
-        # Cause families are a diagnostic, not a paper claim: they are a rule
-        # over delta strings, not an annotation, so nothing in the manuscript
-        # rests on them. They stay in the JSON and the markdown report; use
+        # Cause families are a diagnostic: a rule over delta strings, not an
+        # annotation. They stay in the JSON and the markdown report; use
         # emit_cause_latex explicitly if a table is ever wanted.
 
 

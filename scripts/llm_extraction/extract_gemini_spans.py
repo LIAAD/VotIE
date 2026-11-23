@@ -245,8 +245,8 @@ def main():
             if i % 10 == 0:
                 logger.info(f"Processed {i}/{len(pending)} examples")
 
-            # Frequent checkpoints: a document that stalls used to take the whole
-            # unsaved batch down with it when the run was killed.
+            # Frequent checkpoints, so a stalled document cannot take the whole
+            # unsaved batch down with it if the run is killed.
             if i % args.checkpoint_every == 0:
                 save_jsonl(results, args.output_file)
                 logger.info(f"Checkpoint saved ({len(results)} total) -> {args.output_file}")

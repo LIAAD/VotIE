@@ -74,7 +74,7 @@ STANDARD_DIR = RESULTS_DIR / "standard"
 OUT_PATH = RESULTS_DIR / "statistical_tests.json"
 
 # Count-Against is excluded from the macro denominator everywhere else
-# (scripts/aggregate_seeds.py, §4 of the manuscript): the corpus holds one such
+# (scripts/aggregate_seeds.py, §4 of the paper): the corpus holds one such
 # span, annotated twice at identical offsets, and it falls in M06. Leaving it in
 # here would test a different statistic from the one Table 2 reports.
 EXCLUDED_TYPES = frozenset({"COUNT-AGAINST"})
@@ -198,7 +198,7 @@ def per_doc_counts(
 def macro_f1_from_counts(agg: np.ndarray) -> float:
     """``agg`` has shape (n_types, 3); average per-type F1 over types with
     gold support in the sample (tp+fn > 0). Matches the macro denominator
-    used in Table 3 / §4 of the manuscript: types with zero gold support
+    used in §4 of the paper: types with zero gold support
     in the held-out municipality are excluded so that spurious predictions
     on absent types do not drag the macro to zero on that axis.
     """

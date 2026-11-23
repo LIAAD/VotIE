@@ -36,11 +36,9 @@ BASELINES = [
 # published settings.
 TRANSFORMER_OVERRIDES = {"learning_rate": "5e-5", "batch_size": 8}
 
-# Every LOMO run uses a single GPU, so the only CUDA ordinal that exists is 0. A source config naming a different device
-# (configs/deberta_crf.yaml used to say `device: 1`) propagates into all six of
-# its folds and makes src/trainer.py raise "Device 1 not available" at init, i.e.
-# after the queue wait but before any training. Pin it here so no source config
-# can reintroduce that.
+# Every LOMO run uses a single GPU, so the only CUDA ordinal that exists is 0.
+# Pin it here, so a source config naming another device cannot propagate into
+# all six of its folds.
 SINGLE_GPU_ORDINAL = 0
 
 SRC_DIR = Path("configs")

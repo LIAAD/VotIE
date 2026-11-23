@@ -76,7 +76,8 @@ def run_evaluation(predictions_file: Path, results_file: Path) -> dict:
     
     results = evaluate(
         predictions_path=str(predictions_file),
-        output_path=str(results_file)
+        output_path=str(results_file),
+        relaxed_matching=True,  # exact and relaxed match, as reported in the paper
     )
     
     print(f"✅ Evaluation results saved to: {results_file}")

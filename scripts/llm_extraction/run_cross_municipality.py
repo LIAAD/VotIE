@@ -76,8 +76,7 @@ def build_extractor(provider: str, model: str, temperature: float, max_char_buff
     if provider == "gpt":
         from src.llm_extraction.gpt.extractor import GptSpanExtractor
         from src.llm_extraction.gpt.config import GptConfig
-        # model_id was previously dropped on the floor here, so --model silently
-        # did nothing and the run recorded whatever the config default was.
+        # Pass --model through, so the run records the model actually requested.
         kwargs = {"max_char_buffer": max_char_buffer, "timeout": timeout}
         if model:
             kwargs["model_id"] = model
@@ -202,15 +201,8 @@ def assert_matches_encoder_fold(municipality: str, test_data: List[dict]) -> Non
 
     Table 2 puts generative and encoder rows in the same column, which is only
     meaningful if both were scored on the same documents against the same gold.
-    That was silently false for a full submission cycle: an earlier version of
-    this script built folds with its own segmentation and id scheme, so the
-    published Gemini M06 row was scored against 366 gold entities where the
-    encoders saw 1,786 — same 472 documents, a fifth of the annotations, and
-    three entity types missing entirely. The document count matched, which is
-    why the audit passed; nothing compared the gold.
-
-    Checking ids and gold-span totals against the encoder split is the check that
-    would have caught it, and it costs milliseconds before a paid run.
+    Matching document counts is not enough, so this compares segment ids and
+    gold-span totals against the encoder split before any paid run.
     """
     reference = ENCODER_LOMO_SPLITS / municipality / "test.jsonl"
     if not reference.exists():
@@ -299,8 +291,8 @@ def run_single_experiment(
     n_examples = 5 if strategy == "few_shot" else 1
     lx_examples, example_provenance = build_lomo_examples(test_municipality, n_examples)
 
-    # Hard stop rather than a silent bad run: this is the check whose absence
-    # let leaked prompts reach the previously published LOMO results.
+    # Hard stop rather than a silent bad run: no demonstration may come from the
+    # held-out municipality.
     assert_no_leakage(test_municipality, [Selection(**p) for p in example_provenance])
 
     extractor.lx_examples = lx_examples
@@ -374,10 +366,8 @@ def run_single_experiment(
             existing_predictions = {}
             prior_failures = {}
 
-        # Rewrite keeping BOTH successes and failures. This used to drop the
-        # errored entries "so retries write cleanly", which silently deleted the
-        # failure taxonomy: after one resume, M02 held 122 rows and zero errors
-        # where the run had actually recorded 61 failures.
+        # Rewrite keeping BOTH successes and failures, so a resume never deletes
+        # the recorded failure taxonomy.
         keep = list(existing_predictions.values()) + list(prior_failures.values())
         if keep:
             tmp = predictions_file.with_name(predictions_file.name + '.tmp')
@@ -540,10 +530,8 @@ def run_single_experiment(
 def _counts_from_per_type(per_type: Dict[str, dict]) -> Tuple[int, int, int, int]:
     """``(gold, TP, FN, FP)`` reconstructed from per-type precision/recall/support.
 
-    The evaluator stores only precision/recall/f1 under ``entity_level`` — never
-    raw counts — so this table used to raise ``KeyError: 'true_positives'`` after
-    the last fold, *after* every evaluation file had already been written. The
-    counts are recoverable exactly: ``TP = recall x support``, ``FP = TP/precision
+    The evaluator stores only precision/recall/f1 under ``entity_level``, not raw
+    counts. The counts are recoverable exactly: ``TP = recall x support``, ``FP = TP/precision
     - TP``, ``FN = support - TP``. Rounded once at the end so the columns sum.
     """
     gold = tp = fp = 0.0
@@ -652,10 +640,8 @@ def generate_summary_table(
         avg = f"**{sum(present) / len(present):.3f}**" if present else "--"
         lines.append(f"| {etype} | " + " | ".join(cells) + f" | {avg} |\n")
 
-    # Same class of bug: the key is 'alignment_fidelity', and its fields are
-    # total_spans / aligned_spans / alignment_fidelity. Under the old names this
-    # table was always empty, which would have been read as "nothing to report"
-    # rather than "never looked". Document-level failures are shown alongside,
+    # Fields of 'alignment_fidelity': total_spans / aligned_spans /
+    # alignment_fidelity. Document-level failures are shown alongside,
     # since a discarded span and a document that produced none are different
     # losses.
     lines.append("\n### Alignment Fidelity\n\n")

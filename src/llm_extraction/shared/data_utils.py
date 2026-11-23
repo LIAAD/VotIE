@@ -74,11 +74,10 @@ def save_jsonl(data: List[Dict[str, Any]], file_path: str) -> None:
 def result_to_record(result, **extra: Any) -> Dict[str, Any]:
     """Serialize a ``SpanExtractionResult`` for JSONL storage.
 
-    Every extraction script must go through this function. Hand-built record
-    dicts previously omitted ``diagnostics``, which silently discarded the
-    span-discard counts and token usage the extractors had already measured —
-    the saved spans are all post-alignment, so any fidelity recomputed from
-    them is 1.0 by construction and the run has to be repeated.
+    Every extraction script goes through this function, so ``diagnostics`` (the
+    span-discard counts and token usage measured by the extractors) is always
+    saved; the stored spans are post-alignment, so these counts cannot be
+    recomputed from them later.
 
     Args:
         result: The extraction result to serialize.
