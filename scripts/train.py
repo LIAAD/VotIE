@@ -235,7 +235,7 @@ def train_transformer(baseline_name: str, config_file: str = None, experiment_na
 
     # Train
     output_dir = Path(output_dir) if output_dir else Path("models") / baseline_name / experiment_name
-    print(f"\n📦 Initializing trainer...")
+    print("\n📦 Initializing trainer...")
 
     trainer = VotIETrainer(
         model=model,
@@ -260,7 +260,7 @@ def train_transformer(baseline_name: str, config_file: str = None, experiment_na
         reset_scheduler=bool(training_config.get('reset_scheduler', False)),
         reset_epochs=bool(training_config.get('reset_epochs', True)),
     )
-    print(f"✓ Trainer initialized\n")
+    print("✓ Trainer initialized\n")
 
     print(f"🚀 Starting training for {int(training_config.get('epochs', 10))} epochs...")
     results = trainer.train()
@@ -309,7 +309,7 @@ def main(config_file: str, experiment_name: str = None, output_dir: str = None):
     # Validate baseline
     if baseline_name not in ALL_BASELINES:
         print(f"❌ Unknown baseline: {baseline_name}")
-        print(f"\nAvailable baselines:")
+        print("\nAvailable baselines:")
         print("\nTraditional:")
         for name, desc in TRADITIONAL_BASELINES.items():
             print(f"  - {name}: {desc}")
@@ -328,7 +328,7 @@ def main(config_file: str, experiment_name: str = None, output_dir: str = None):
         else:
             result_dir = train_transformer(baseline_name, config_file, experiment_name, output_dir)
 
-        print(f"\n🎉 Training completed successfully!")
+        print("\n🎉 Training completed successfully!")
         print(f"📁 Model saved to: {result_dir}")
 
     except Exception as e:

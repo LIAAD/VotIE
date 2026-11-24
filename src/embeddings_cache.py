@@ -49,7 +49,7 @@ def fasttext_candidates(explicit: Optional[Union[str, Path]] = None) -> list[Pat
     Deliberate choices beat conventions. Note that a *bare* filename in the YAML
     (every config ships `fasttext_path: cc.pt.300.bin`) is a placeholder, not a
     CWD-relative path — resolving it against the working directory would make
-    the answer depend on where sbatch was invoked from, so it is tried last.
+    the answer depend on where the job was launched from, so it is tried last.
     """
     candidates: list[Path] = []
     explicit_path = Path(explicit).expanduser() if explicit else None

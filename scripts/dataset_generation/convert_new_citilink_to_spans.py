@@ -834,7 +834,7 @@ def main():
     logger.info("Saving...")
     for split_name in ["train", "dev", "test"]:
         save_jsonl(examples[split_name], args.output_dir / f"{split_name}.jsonl")
-    final_stats = save_statistics(stats, examples, warnings, args.output_dir)
+    save_statistics(stats, examples, warnings, args.output_dir)
 
     # Summary
     logger.info("")

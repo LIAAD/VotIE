@@ -574,13 +574,13 @@ class ErrorClassifier:
                         lines.append(f"- Gold: \"{error.gold_entity.text}\" "
                                    f"[{error.gold_entity.start}:{error.gold_entity.end}]\n")
                     else:
-                        lines.append(f"- Gold: (none)\n")
+                        lines.append("- Gold: (none)\n")
                     
                     if error.pred_entity:
                         lines.append(f"- Pred: \"{error.pred_entity.text}\" "
                                    f"[{error.pred_entity.start}:{error.pred_entity.end}]\n")
                     else:
-                        lines.append(f"- Pred: (none)\n")
+                        lines.append("- Pred: (none)\n")
                     
                     if error.context:
                         lines.append(f"- Context: ...{error.context}...\n")

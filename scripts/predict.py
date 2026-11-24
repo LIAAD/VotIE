@@ -261,7 +261,7 @@ def predict_single_window(model, tokenizer, tokens: List[str], device: str = 'cu
         return [0] * len(tokens)
 
     if len(predictions) == 0:
-        logger.error(f"Model.decode returned empty list")
+        logger.error("Model.decode returned empty list")
         return [0] * len(tokens)
 
     # Validate prediction length

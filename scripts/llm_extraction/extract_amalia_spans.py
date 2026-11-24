@@ -258,7 +258,7 @@ def main():
         sum(r["processing_time"] for r in results) / len(results) if results else 0
     )
 
-    logger.info(f"\nExtraction complete!")
+    logger.info("\nExtraction complete!")
     logger.info(f"  Total examples: {len(results)}")
     logger.info(f"  Successful: {successful}")
     logger.info(f"  Failed: {len(results) - successful}")

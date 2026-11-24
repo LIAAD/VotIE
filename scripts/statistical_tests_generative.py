@@ -57,13 +57,11 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.statistical_tests import (  # noqa: E402
     SEEDS,
-    bootstrap_ci,
     in_domain_pred,
     load_counts,
     macro_f1_from_counts,
     paired_bootstrap_test,
     paired_bootstrap_test_pooled,
-    per_doc_counts,
 )
 from src.llm_extraction.schemas import ENTITY_TYPES, SpanEntity  # noqa: E402
 from src.llm_extraction.shared.evaluation import (  # noqa: E402

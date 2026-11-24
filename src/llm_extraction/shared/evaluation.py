@@ -365,7 +365,7 @@ def print_evaluation_results(results: Dict[str, Any]) -> None:
 
     # Entity-level metrics (exact boundaries)
     entity_metrics = results["entity_level"]
-    print(f"\nEntity-Level Metrics (Exact Boundary Matching):")
+    print("\nEntity-Level Metrics (Exact Boundary Matching):")
     print(f"  Precision: {entity_metrics['precision']:.4f}")
     print(f"  Recall:    {entity_metrics['recall']:.4f}")
     print(f"  F1:        {entity_metrics['f1']:.4f}")
@@ -373,7 +373,7 @@ def print_evaluation_results(results: Dict[str, Any]) -> None:
     # Relaxed boundary metrics if present
     if "relaxed_boundary_metrics" in results:
         relaxed = results["relaxed_boundary_metrics"]
-        print(f"\nRelaxed Span Matching (Type Match + Overlap):")
+        print("\nRelaxed Span Matching (Type Match + Overlap):")
         print(f"  Precision: {relaxed['precision']:.4f}")
         print(f"  Recall:    {relaxed['recall']:.4f}")
         print(f"  F1:        {relaxed['f1']:.4f}")
@@ -381,7 +381,7 @@ def print_evaluation_results(results: Dict[str, Any]) -> None:
         print(f"  Δ F1:      {delta_f1:+.4f} ({delta_f1*100:+.1f} points)")
 
     # Per-type metrics
-    print(f"\nPer-Entity-Type Metrics:")
+    print("\nPer-Entity-Type Metrics:")
     print(f"  {'Entity Type':<25} {'Prec':>6} {'Rec':>6} {'F1':>6} {'Support':>8}")
     print(f"  {'-' * 60}")
 
@@ -394,7 +394,7 @@ def print_evaluation_results(results: Dict[str, Any]) -> None:
     # Alignment fidelity
     if "alignment_fidelity" in results:
         fidelity = results["alignment_fidelity"]
-        print(f"\nAlignment Fidelity:")
+        print("\nAlignment Fidelity:")
         print(f"  Total spans:          {fidelity['total_spans']}")
         print(f"  Aligned spans:        {fidelity['aligned_spans']}")
         print(f"  Failed alignments:    {fidelity['failed_spans']}")

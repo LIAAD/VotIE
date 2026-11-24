@@ -408,7 +408,7 @@ def compute_entity_level_metrics(pred_labels: List[List[str]], gold_labels: List
     evaluator = EntityLevelEvaluator()
     metrics = evaluator.compute_metrics(pred_labels, gold_labels)
 
-    logger.info(f"\nExact Match (macro-averaged):")
+    logger.info("\nExact Match (macro-averaged):")
     logger.info(f"  F1:        {metrics.get('entity_f1', 0.0):.4f}")
     logger.info(f"  Precision: {metrics.get('entity_precision', 0.0):.4f}")
     logger.info(f"  Recall:    {metrics.get('entity_recall', 0.0):.4f}")

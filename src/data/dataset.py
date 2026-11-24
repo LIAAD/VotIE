@@ -393,7 +393,7 @@ def jsonl_to_examples_with_dynamic_windowing(
     
     # Log windowing statistics
     if enable_windowing:
-        logger.info(f"Dynamic windowing statistics:")
+        logger.info("Dynamic windowing statistics:")
         logger.info(f"  Total segments: {windowing_stats['total_segments']}")
         logger.info(f"  Single-window segments: {windowing_stats['single_window_segments']}")
         logger.info(f"  Multi-window segments: {windowing_stats['multi_window_segments']}")
@@ -905,7 +905,7 @@ def load_ner_dataset_offset_aligned(
     the model would be built with a smaller classifier head and the
     state-dict load would fail with a size mismatch.
     """
-    logger.info(f"Loading NER dataset with offset-aligned tokenization")
+    logger.info("Loading NER dataset with offset-aligned tokenization")
     logger.info(f"  max_length={max_length}  overlap_subwords={overlap_subwords}")
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
@@ -1028,7 +1028,7 @@ def load_ner_dataset_with_dynamic_windowing(
     dev_dataset = VotIEDataset(dev_features)
     test_dataset = VotIEDataset(test_features)
     
-    logger.info(f"Dataset loaded with dynamic windowing:")
+    logger.info("Dataset loaded with dynamic windowing:")
     logger.info(f"  Train: {len(train_dataset)} examples")
     logger.info(f"  Dev: {len(dev_dataset)} examples") 
     logger.info(f"  Test: {len(test_dataset)} examples")

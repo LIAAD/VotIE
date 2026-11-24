@@ -223,7 +223,7 @@ def main():
     total_entities = sum(len(r["entities"]) for r in results)
     avg_time = sum(r["processing_time"] for r in results) / len(results) if results else 0
 
-    logger.info(f"\nExtraction complete!")
+    logger.info("\nExtraction complete!")
     logger.info(f"  Total: {len(results)}, Successful: {counts['ok']}, "
                 f"Failed: {counts['model']} model + {counts['infra']} infra")
     logger.info(f"  Total entities: {total_entities}, Avg time: {avg_time:.2f}s")

@@ -205,7 +205,7 @@ def main() -> int:
     os.replace(tmp, out)
 
     # ---- human-readable twin ------------------------------------------------
-    md = [f"# Generative standard benchmark — consolidated status",
+    md = ["# Generative standard benchmark — consolidated status",
           "",
           f"Generated {payload['generated']} by `scripts/llm_extraction/consolidate_standard_benchmark.py`.",
           f"Source: `{payload['source_dir']}`  ·  gold: `{payload['gold']}` ({len(gold_ids)} documents).",

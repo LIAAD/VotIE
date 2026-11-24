@@ -65,7 +65,6 @@ from safetensors.torch import save_file as save_safetensors
 from tqdm import tqdm
 
 import sys
-from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.absolute()))
 
 from src.models.base import BaseVotIEModel
@@ -523,7 +522,7 @@ class VotIETrainer:
         total_params = sum(p.numel() for p in self.model.parameters())
         trainable_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
         
-        logger.info(f"📊 Model statistics:")
+        logger.info("📊 Model statistics:")
         logger.info(f"   Architecture: {self.model.__class__.__name__}")
         logger.info(f"   Total parameters: {total_params:,}")
         logger.info(f"   Trainable parameters: {trainable_params:,}")

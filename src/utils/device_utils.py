@@ -110,21 +110,21 @@ def log_device_info(device: torch.device):
         device_name = torch.cuda.get_device_name(device_id)
         memory = torch.cuda.get_device_properties(device_id).total_memory / (1024**3)
 
-        logger.info(f"Device Type:   CUDA (NVIDIA GPU)")
+        logger.info("Device Type:   CUDA (NVIDIA GPU)")
         logger.info(f"Device ID:     {device_id}")
         logger.info(f"Device Name:   {device_name}")
         logger.info(f"Total Memory:  {memory:.2f} GB")
 
     elif device.type == 'mps':
-        logger.info(f"Device Type:   MPS (Apple Silicon GPU)")
-        logger.info(f"Device Name:   Apple Metal Performance Shaders")
-        logger.info(f"Note:          MPS provides GPU acceleration on Apple Silicon Macs")
+        logger.info("Device Type:   MPS (Apple Silicon GPU)")
+        logger.info("Device Name:   Apple Metal Performance Shaders")
+        logger.info("Note:          MPS provides GPU acceleration on Apple Silicon Macs")
 
     elif device.type == 'cpu':
         import platform
-        logger.info(f"Device Type:   CPU")
+        logger.info("Device Type:   CPU")
         logger.info(f"Processor:     {platform.processor()}")
-        logger.info(f"Note:          For better performance, use a GPU (CUDA or MPS)")
+        logger.info("Note:          For better performance, use a GPU (CUDA or MPS)")
 
     logger.info("=" * 80)
 

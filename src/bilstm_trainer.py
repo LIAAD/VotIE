@@ -334,8 +334,8 @@ class BiLSTMTrainer:
         # Build vocabulary from training data
         self.embedding_handler.build_vocabulary(sentences)
 
-        # Create embedding matrix
-        embedding_matrix = self.embedding_handler.create_embedding_matrix()
+        # Create embedding matrix (stored on the handler, read by create_model)
+        self.embedding_handler.create_embedding_matrix()
 
         # Character vocabulary if using char CNN
         if self.use_char_cnn:
@@ -447,7 +447,7 @@ class BiLSTMTrainer:
         )
 
         # Setup optimizer and scheduler
-        logger.info(f"Training configuration:")
+        logger.info("Training configuration:")
         logger.info(f"  Learning rate: {self.learning_rate}")
         logger.info(f"  Weight decay (L2): {self.weight_decay}")
         logger.info(f"  Dropout: {self.dropout}")

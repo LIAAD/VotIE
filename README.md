@@ -122,7 +122,7 @@ pip install -r requirements.txt
 ```
 
 The BiLSTM baseline needs the Portuguese fastText vectors: download
-[`cc.pt.300.bin`](https://fasttext.cc/docs/en/crawl-vectors.html), unpack it, and set
+[`cc.pt.300.bin.gz`](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.pt.300.bin.gz), unpack it, and set
 `VOTIE_FASTTEXT_PATH` to its location.
 
 The generative baselines read their settings from a `.env` file at the repository root:
