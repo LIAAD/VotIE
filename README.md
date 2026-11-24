@@ -14,7 +14,7 @@ predictions and evaluations behind the paper's tables.
 
 - **Paper:** [arxiv.org/abs/2601.03997](https://arxiv.org/abs/2601.03997)
 - **Demo:** [huggingface.co/spaces/Anonymous3445/VotIE-demo](https://huggingface.co/spaces/Anonymous3445/VotIE-demo)
-- **Model:** [huggingface.co/Evans2424/DeBERTa-CRF-VotIE](https://huggingface.co/Evans2424/DeBERTa-CRF-VotIE) (mDeBERTa-v3 + CRF, the best system)
+- **Model:** [huggingface.co/liaad/DeBERTa-CRF-VotIE](https://huggingface.co/liaad/DeBERTa-CRF-VotIE) (mDeBERTa-v3 + CRF, the best system)
 - **Dataset:** CitiLink-Minutes, [doi.org/10.25747/7KG6-1K22](https://doi.org/10.25747/7KG6-1K22)
 
 <div align="center">
@@ -44,7 +44,7 @@ python scripts/quick_start.py
 ```python
 from transformers import AutoModel, AutoTokenizer
 
-repo = "Evans2424/DeBERTa-CRF-VotIE"
+repo = "liaad/DeBERTa-CRF-VotIE"
 tokenizer = AutoTokenizer.from_pretrained(repo)
 model = AutoModel.from_pretrained(repo, trust_remote_code=True).eval()
 

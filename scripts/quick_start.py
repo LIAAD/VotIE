@@ -8,7 +8,7 @@ Replace `text` with your own Portuguese meeting-minutes segment.
 
 from transformers import AutoModel, AutoTokenizer
 
-model_name = "Evans2424/DeBERTa-CRF-VotIE"
+model_name = "liaad/DeBERTa-CRF-VotIE"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name, trust_remote_code=True).eval()
 
