@@ -84,8 +84,8 @@ The benchmark uses 120 minutes from six Portuguese municipalities (2021–2024):
 - **Standard split:** chronological within each municipality, 72/24/24 documents (1,803 / 553 / 529
   segments). In training, segments with rare types (`COUNT-BLANK`, `COUNT-FAVOR`, `VOTING-METHOD`) or
   with more than one voting event are oversampled (2,463 training rows).
-- **Leave-one-municipality-out (LOMO):** train on five municipalities, test on all segments of the
-  sixth (folds M01–M06).
+- **Leave-one-municipality-out (LOMO):** test on all segments of one municipality, train and validate on
+  the other five (85/15, stratified; folds M01–M06).
 
 ## Getting the data
 

@@ -8035,7 +8035,7 @@
       "VOTING",
       "VOTING-METHOD"
     ],
-    "excluded": "COUNT-AGAINST (ONE gold span corpus-wide \u2014 '1 voto contra' in Porto_cm_004_2021-12-06_17, annotated twice at identical offsets, hence the '2 instances' previously reported; it falls in M06 and never in the standard test split)",
+    "excluded": "COUNT-AGAINST (ONE gold span corpus-wide \u2014 '1 voto contra' in Porto_cm_004_2021-12-06_17, annotated twice at identical offsets; it falls in M06 and never in the standard test split)",
     "denominators": {
       "fixed11": "average over the 11 types above, absent types scored 0.0",
       "support": "average over types with support > 0 in that fold (8-11 for LOMO)"

@@ -1,12 +1,10 @@
 # Core ML & Transformer stack
 torch>=2.0.0
-transformers>=4.40.0
+transformers>=4.40.0,<5
 pytorch-crf>=0.7.2
-accelerate>=0.27.0
 
 # Data processing
 numpy>=1.21.0
-pandas>=1.3.0
 scikit-learn>=1.0.0
 
 # NER evaluation
@@ -20,12 +18,10 @@ python-dotenv>=1.0.0
 sentencepiece>=0.1.96
 pydantic>=2.0.0
 
-# Portuguese NLP
-spacy>=3.4.0       # required for dataset generation scripts
+# BiLSTM baseline
 fasttext           # optional: required by bilstm_fasttext baseline only
 
 # LLM extraction (optional: required only for the generative baselines)
-google-generativeai
 google-genai>=0.1.0
 langextract[openai]>=1.1.0  # extraction library used by all three generative baselines
 tiktoken>=0.7      # token counting for GPT cost when the gateway hides usage

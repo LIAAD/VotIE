@@ -49,13 +49,10 @@ class PortugueseFeatureExtractor:
 
     def __init__(self):
         """
-        Initialize the feature extractor. POS and dependency features that
-        previously relied on spaCy have been removed to keep the baseline
-        lightweight and dependency-free. The extractor still provides word
-        shape, affix and domain-specific features.
+        Initialize the feature extractor: word shape, affix and
+        domain-specific (voting vocabulary) features, with no external
+        NLP dependencies.
         """
-        self.use_spacy = False
-        self.nlp = None
 
         # Portuguese voting patterns
         self.voting_patterns = {
